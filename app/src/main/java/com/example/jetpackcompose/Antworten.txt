@@ -1,0 +1,14 @@
+A) Welche Vorteile bieten Coroutinen in der Android-
+Entwicklung und wie tragen sie dazu bei, asynchrone
+Aufgaben effizienter und benutzerfreundlicher zu
+gestalten?
+
+B) Erkläre warum du dich für einen bestimmten Dispatcher in Aufgabe 2A)
+entschieden hast.
+
+C) Nenne zwei praxisrelevante Anwendungsfälle, bei denen der Einsatz von
+Services sinnvoll ist. Erkläre kurz warum.
+
+D) Welche Vorteile bietet die Kombination von Services und Coroutinen? Kannst du
+ein Beispiel aus dem Code der Wetter-App nennen, in dem beide miteinander
+kombiniert
