@@ -2,13 +2,41 @@ A) Welche Vorteile bieten Coroutinen in der Android-
 Entwicklung und wie tragen sie dazu bei, asynchrone
 Aufgaben effizienter und benutzerfreundlicher zu
 gestalten?
+> Coroutinen verbessern die Effizienz und Leistung, weil sie unter anderem vermeiden, dass die UI blockiert wird.
+> Durch verschiedene Dispatcher können Coroutinen gezielt ressourcenschonend eingesetzt werden.
+> Der Code bleibt flüssig und leicht verständlich.
+> Im Gegensatz zu Threads können Coroutinen mehrere Aufgaben ausführen, ohne groß Ressourcen
+> zu beanspruchen, und sie lassen sich bei Bedarf pausieren und fortsetzen.
+> Coroutinen bieten eine einfache Möglichkeit zur Fehlerbehandlung, da Fehler direkt mit
+> try-catch-Blöcken behandelt werden können.
 
 B) Erkläre warum du dich für einen bestimmten Dispatcher in Aufgabe 2A)
 entschieden hast.
+> Ich habe den Dispatcher.IO ausgewählt, weil er speziell für IO-intensive Aufgaben wie Netzwerk- und Datenbankoperationen optimiert ist.
+> (In der Methode macht man ja einen Netzwerkzugriff)
+> Dispatcher.Default ist für rechenintensive Aufgaben, was das nicht ist.
+> Default.Main ist für Aufgaben auf dem Main-Thread. Netzwerkzugriffe dürfen gar nicht auf dem
+> Main-Thread stattfinden. Also ist das schon ausgeschlossen.
 
 C) Nenne zwei praxisrelevante Anwendungsfälle, bei denen der Einsatz von
 Services sinnvoll ist. Erkläre kurz warum.
+> 1. Musikstreaming (z.B. Spotify)
+>    Spielt die Musik auch dann ab, wenn die App minimiert ist.
+>    Ein Foregroundservice ermöglicht Aufgaben im Hintergrund auszuführen, ohne dass die Activity aktiv sein muss.
+>    Außerdem kann der Nutzer per Benachrichtigung die Musikwiedergabe steuern
+> 2. Synchronisation und Datenupload im Hintergrund (z.B. Onedrive)
+>    Die Synchronisation/Datenupload kann im Hintergrund durchgeführt werden, ohne die UI zu blockieren.
 
 D) Welche Vorteile bietet die Kombination von Services und Coroutinen? Kannst du
 ein Beispiel aus dem Code der Wetter-App nennen, in dem beide miteinander
 kombiniert
+> Dispatcher können für spezifische Aufgaben optimal benutzt werden.
+>   -> Erhöhte Effizienz
+> Coroutinen reduzieren die Komplexität und führen zu übersichtlicherem Code in einem sequentiellen Stil (bieten Kontrollfluss und Transparenz).
+>   -> Bessere Fehlerbehandlung
+> Die Hintergrundarbeit wird nur bei Bedarf ausgeführt, da die Coroutinen pausiert und fortgesetzt werden können.
+>   -> Ressourcenoptimierung
+
+> Im PopupService.kt (Service) wird in der initializeTimerFromSettings()-Methode eine Coroutine verwendet.
+> Die Coroutine mit Dispatcher.IO verhindert eine Blockierung des Main-Threads.
+> Es handelt sich dabei um eine I/O Operation.
